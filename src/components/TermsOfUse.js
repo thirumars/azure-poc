@@ -6,8 +6,15 @@ import axios from 'axios';
 
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
     const paddingToBottom = 20;
+    console.log(layoutMeasurement.height);
+    console.log(contentOffset.y);
+    console.log(contentSize.height);
     return layoutMeasurement.height + contentOffset.y >=
         contentSize.height - paddingToBottom;
+};
+
+const isCloseToUp = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    return contentOffset.y === 0;
 };
 
 function TermsOfUse() {
@@ -67,6 +74,9 @@ function TermsOfUse() {
                 onScroll={({ nativeEvent }) => {
                     if (isCloseToBottom(nativeEvent)) {
                         setAccepted(prevousAccept => true)
+                    }
+                    if (isCloseToUp(nativeEvent)) {
+                        setAccepted(prevousAccept => false)
                     }
                 }}
             >
