@@ -8,8 +8,8 @@ function App() {
   return (
     <Router>
       <Switch>
+      <Route path="/consent/termsofuse" component={TermsOfUse}/>
         <Route path="/consent/termsandconditions" component={TermsAndConditions}/>
-        <Route path="/consent/termsofuse" component={TermsOfUse}/>
       </Switch>
     </Router>
    /* <div>
